@@ -16,7 +16,7 @@ def backupToZip(folder):
     while True:
         zipFileName = os.path.basename(folder) + '_' + str(number) + '.zip'
         if not os.path.exists(zipFileName):
-            break
+            break   # You found it!
         number += 1
     
     # Create the ZIP file
