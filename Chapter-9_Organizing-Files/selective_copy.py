@@ -7,7 +7,7 @@ import os, shutil
 
 def copy_files(folderPath, destinyPath, extension):
     """
-    Cope files from 'folderPath' to 'destinyPath' according to 'extension'.
+    Copy files from 'folderPath' to 'destinyPath' according to 'extension'.
 
     folderPath (str) - absolute path of the origin folder.
     destinyPath (str) - absolute path of the destination folder
