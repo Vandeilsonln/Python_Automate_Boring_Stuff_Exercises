@@ -10,36 +10,28 @@ import os, shutil
 from PIL import Image
 
 
-os.chdir(r'C:\Users\aline\Pictures\Viagens')
-root = os.getcwd()
-
 # TODO: Create a list of acceptable extension files and make the code working with all of them.
-ext = '.jpg'
+def rename_pictures_to_date(rootPath, ext='.jpg'):
+    os.chdir(rootPath)
+    root = os.getcwd()
+    for folderName, subfolders, filenames in os.walk(root):     # we won't be using 'subfolders' here, but it is still needed to unpack the os.walk() function's correctly.
+        print(f'Looking for {ext} files in {folderName}')
+        for file in filenames:      # every actual file that is inside the current folder.
+            if not file.endswith(ext):
+                with open('.\\rejected.txt', 'a') as rejected:
+                    rejected.write(file)
+                    rejected.write('\n')
+                continue
+            else:
+                oldName = os.path.abspath(folderName) + '\\' + file
 
+                with Image.open(oldName) as photo:
+                    try:
+                        info = photo._getexif()
+                        newFileName = root + '\\' + (info[36867].replace(':', '_')) + ext
+                        # shutil.move(oldName, newFileName)
+                    except:
+                        # TODO: Create a function write_to_reject(file) in this case AND for the files with other file extensions as well
+    return None
 
-# TODO: Transform this code in a single function. 
-for folderName, subfolders, filenames in os.walk(root):     # we won't be using 'subfolders' here, but it is still needed to unpack the os.walk() function's correctly.
-    print(f'Looking for {ext} files in {folderName}')
-
-    for file in filenames:      # every actual file that is inside the current folder.
-        print(file)
-        if not file.endswith(ext):
-            print("File's extension rejected")
-            with open('.\\rejected.txt', 'a') as rejected:
-                rejected.write(file)
-                rejected.write('\n')
-            continue
-        else:
-            oldName = os.path.abspath(folderName) + '\\' + file
-
-            with Image.open(oldName) as photo:
-                try:
-                    
-                    info = photo._getexif()
-                    newFileName = root + '\\' + (info[36867].replace(':', '_')) + ext
-                    # shutil.move(oldName, newFileName)
-                    
-                except:
-                    print('Something went wrong')
-                    # TODO: Create a function write_to_reject(file) in this case AND for the files with other file extensions as well
-                
+print(rename_pictures_to_date(r'C:\Users\aline\Pictures\Viagens', '.jpg'))
