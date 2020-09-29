@@ -32,6 +32,7 @@ for folderName, subfolders, filenames in os.walk(root):     # we won't be using 
             with Image.open(oldName) as photo:
                 info = photo._getexif()
                 newFileName = root + '\\' + (info[36867].replace(':', '_')) + ext
+                # In some photos, the line above gives the error (TypeError: 'NoneType object is not subscriptable)
             # shutil.move(oldName, newFileName)
             print(oldName)
             print(newFileName)
