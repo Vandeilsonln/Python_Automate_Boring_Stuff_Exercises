@@ -14,9 +14,8 @@ from PIL import Image
 def rename_pictures_to_date(rootPath, ext='.jpg'):
     os.chdir(rootPath)
     root = os.getcwd()
-    for folderName, subfolders, filenames in os.walk(root):     # we won't be using 'subfolders' here, but it is still needed to unpack the os.walk() function's correctly.
-        print(f'Looking for {ext} files in {folderName}')
-        for file in filenames:      # every actual file that is inside the current folder.
+    for folderName, subfolders, filenames in os.walk(root):
+        for file in filenames:
             if not file.endswith(ext):
                 with open('.\\rejected.txt', 'a') as rejected:
                     rejected.write(file)
@@ -32,6 +31,7 @@ def rename_pictures_to_date(rootPath, ext='.jpg'):
                         # shutil.move(oldName, newFileName)
                     except:
                         # TODO: Create a function write_to_reject(file) in this case AND for the files with other file extensions as well
-    return None
+                        pass
+    return 'Done.'
 
 print(rename_pictures_to_date(r'C:\Users\aline\Pictures\Viagens', '.jpg'))
