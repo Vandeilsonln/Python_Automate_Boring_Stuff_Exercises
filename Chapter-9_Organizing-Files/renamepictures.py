@@ -16,8 +16,11 @@ root = os.getcwd()
 # TODO: Create a list of acceptable extension files and make the code working with all of them.
 ext = '.jpg'
 
+
+# TODO: Transform this code in a single function. 
 for folderName, subfolders, filenames in os.walk(root):     # we won't be using 'subfolders' here, but it is still needed to unpack the os.walk() function's correctly.
     print(f'Looking for {ext} files in {folderName}')
+
     for file in filenames:      # every actual file that is inside the current folder.
         print(file)
         if not file.endswith(ext):
@@ -30,11 +33,13 @@ for folderName, subfolders, filenames in os.walk(root):     # we won't be using 
             oldName = os.path.abspath(folderName) + '\\' + file
 
             with Image.open(oldName) as photo:
-                info = photo._getexif()
-                newFileName = root + '\\' + (info[36867].replace(':', '_')) + ext
-                # In some photos, the line above gives the error (TypeError: 'NoneType object is not subscriptable)
-            # shutil.move(oldName, newFileName)
-            print(oldName)
-            print(newFileName)
-            print('-' * 50)
+                try:
+                    
+                    info = photo._getexif()
+                    newFileName = root + '\\' + (info[36867].replace(':', '_')) + ext
+                    # shutil.move(oldName, newFileName)
+                    
+                except:
+                    print('Something went wrong')
+                    # TODO: Create a function write_to_reject(file) in this case AND for the files with other file extensions as well
                 
