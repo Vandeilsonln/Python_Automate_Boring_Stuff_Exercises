@@ -1,4 +1,7 @@
 #! python3
+import logging
+logging.basicConfig(filename=r'C:\delicious\logfile.txt', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+# logging.disable(logging.CRITICAL)  # Comment this out to disable logging messages to be diplayed
 
 # I'll be writing the author's suggestion and notes in this code.
 
@@ -73,3 +76,22 @@ def switch_lights(stoplight):
 
 
 switch_lights(market_2nd)
+
+# ----------------------------------------
+print('-' * 50)
+# LOGGING
+
+logging.debug('Start of program')
+
+def factorial(n):
+    logging.debug('Start of factorial (%s%%)' % (n))
+    total = 1
+    for i in range(1, n + 1):
+        total *= i
+        logging.debug('i is ' + str(i) + ', total is ' + str(total))
+    logging.debug('End of factorial(%s%%)' % (n))
+    return total
+
+
+print(factorial(5))
+logging.debug('End of Program')
