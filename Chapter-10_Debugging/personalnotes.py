@@ -72,7 +72,7 @@ def switch_lights(stoplight):
             stoplight[key] = 'green'
 
     print(stoplight.values())
-    assert 'red' in stoplight.values(), 'Neither light is red! ' + str(stoplight)
+    # assert 'red' in stoplight.values(), 'Neither light is red! ' + str(stoplight)
 
 
 switch_lights(market_2nd)
@@ -95,3 +95,18 @@ def factorial(n):
 
 print(factorial(5))
 logging.debug('End of Program')
+
+# ----------------------------------------
+print('-' * 50)
+# breakpoints
+
+import random
+
+
+heads = 0
+for i in range(1000):
+    if random.randint(0,1) == 1:
+        heads += 1
+    if i == 500:
+        print('Halway done!')
+print('Heads came up ' + str(heads) + ' times.')
