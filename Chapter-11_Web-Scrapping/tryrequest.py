@@ -33,7 +33,7 @@ noStarchSoup = bs4.BeautifulSoup(res.text)
 print(type(noStarchSoup))
 
 
-exampleFile = open('example.html')
+exampleFile = open(r'C:\Users\aline\Desktop\Vandeilson_UNICSUL\git_repositorio\python_automate_boring_stuff_exercises\Chapter-11_Web-Scrapping\example.html')
 exampleSoup = bs4.BeautifulSoup(exampleFile)
 
-print(exampleSoup)
+print(type(exampleSoup))
