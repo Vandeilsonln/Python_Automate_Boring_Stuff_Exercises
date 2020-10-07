@@ -21,7 +21,7 @@ res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, features='html.parser')
 
 # Open a browser tab for each result.
-linkElems = soup.select('a', {'class': 'ra'})
+linkElems = soup.select('.g a')
 numOpen = min(5, len(linkElems))
 for i in range(numOpen):
     webbrowser.open('https://google.com' + linkElems[i].get('href'))
