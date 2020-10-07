@@ -24,8 +24,9 @@ while not url.endswith('#'):
         comicUrl = comicElem[0].get('src')
         # Download the image.
         print('Downloading image %s...' % (comicUrl))
-        res.requests.get(comicUrl)
+        res = requests.get(comicUrl)
         res.raise_for_status()
+    
 
         # Save the image to the folder.
         imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)), 'wb')
