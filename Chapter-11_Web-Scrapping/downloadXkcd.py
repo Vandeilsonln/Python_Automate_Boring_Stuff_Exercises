@@ -9,7 +9,12 @@ os.chdir(r'.\Chapter-11_Web-Scrapping')
 os.makedirs(r'xkcd', exist_ok=True)  # store comics here
 
 while not url.endswith('#'):
-    # TODO: Download the page.
+    # Download the page.
+    print('Downloading page %s...' % url)
+    res = requests.get(url)
+    res.raise_for_status()
+
+    soup = bs4.BeautifulSoup(res.text)
 
     # TODO: Find the URL of the comic image.
 
