@@ -10,7 +10,7 @@ os.makedirs(r'xkcd', exist_ok=True)  # store comics here
 
 while not url.endswith('#'):
     # Download the page.
-    print('Downloading page %s...' % url)
+    #print('Downloading page %s...' % url)
     res = requests.get(url)
     res.raise_for_status()
 
@@ -23,11 +23,10 @@ while not url.endswith('#'):
     else:
         comicUrl = comicElem[0].get('src')
         # Download the image.
-        print('Downloading image %s...' % (comicUrl))
-        res = requests.get(comicUrl)
+        #print('Downloading image %s...' % (comicUrl))
+        res = requests.get('https:' + comicUrl)
         res.raise_for_status()
     
-
         # Save the image to the folder.
         imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)), 'wb')
         for chunk in res.iter_content(100000):
