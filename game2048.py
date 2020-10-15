@@ -17,13 +17,16 @@ actions = ['Keys.UP', 'Keys.RIGHT', 'Keys.DOWN', 'Keys.LEFT']
 
 # Play! (a specific number of times)
 page = browser.find_element_by_tag_name('html')
-for i in range(250):
-    a = randint(0, len(actions)-1)
-    print(a)
-    page.send_keys(actions[a])
 
+for i in range(10):
+    for j in actions:
+        print(j)
+        page.send_keys(j)
+        # sleep(1)
 
 # Get the score
+score = browser.find_element_by_class_name('score-container').text
+print(score)
 
 # Write the score in a .txt file
 
