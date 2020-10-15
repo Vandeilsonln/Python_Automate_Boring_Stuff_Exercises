@@ -29,6 +29,6 @@ a = 1
 for image in picturesList[0:20]:
     url = image.get_attribute('src')
     print(url)
-    urllib.request.urlretrieve(url, 'my-test' + str(a) + '.jpg')   # error
+    urllib.request.urlretrieve(url, 'my-test' + str(a) + '.jpg')
     print('Done', a)
     a +=1
