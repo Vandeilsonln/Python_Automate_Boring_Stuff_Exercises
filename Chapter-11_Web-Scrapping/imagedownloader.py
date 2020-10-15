@@ -18,7 +18,7 @@ browser.find_element_by_xpath('//button[text()="AGREE"]').click()
 
 # Search something
 seachBar = browser.find_element_by_class_name('Searchbar-textInput')
-seachBar.send_keys('Ireland')
+seachBar.send_keys('kitten')
 seachBar.submit()
 
 # identify the images
