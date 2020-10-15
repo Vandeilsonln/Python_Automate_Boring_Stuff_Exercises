@@ -4,7 +4,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
-import urllib
+import urllib3
 
 PATH = r"C:\Program Files (x86)\chromedriver.exe"
 browser = webdriver.Chrome(PATH)
@@ -22,5 +22,7 @@ seachBar.send_keys('Ireland')
 seachBar.submit()
 
 # identify the images
+picturesList = browser.find_element_by_class_name('image-list-link').get_attribute('href')
 
 # download them
+urllib3.request.urlencode(picturesList, 'my-test.jpg')
