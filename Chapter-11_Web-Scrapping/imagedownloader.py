@@ -13,8 +13,8 @@ browser = webdriver.Chrome(PATH)
 browser.get('https://imgur.com/')
 
 # TODO: Agree with the cookies
-# sleep(3)
-# browser.find_element_by_xpath().click()
+sleep(1)
+browser.find_element_by_xpath('//button[text()="AGREE"]').click()
 
 # Search something
 seachBar = browser.find_element_by_class_name('Searchbar-textInput')
@@ -26,7 +26,7 @@ picturesList = browser.find_elements_by_class_name('image-list-link')
 
 # download them
 a = 1
-for image in picturesList:
+for image in picturesList[0:20]:
     url = image.get_attribute('href')
     # urllib.request.urlretrieve(picturesList, 'my-test' + str(a) + '.jpg')   # error
     print('Done', a)
