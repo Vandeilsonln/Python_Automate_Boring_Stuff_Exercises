@@ -22,12 +22,13 @@ seachBar.send_keys('Ireland')
 seachBar.submit()
 
 # identify the images
-picturesList = browser.find_elements_by_class_name('image-list-link')
+picturesList = browser.find_elements_by_tag_name('img')
 
 # download them
 a = 1
 for image in picturesList[0:20]:
-    url = image.get_attribute('href')
-    # urllib.request.urlretrieve(picturesList, 'my-test' + str(a) + '.jpg')   # error
+    url = image.get_attribute('src')
+    print(url)
+    urllib.request.urlretrieve(url, 'my-test' + str(a) + '.jpg')   # error
     print('Done', a)
     a +=1
