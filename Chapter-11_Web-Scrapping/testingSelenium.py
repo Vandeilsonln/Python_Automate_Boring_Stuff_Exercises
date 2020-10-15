@@ -22,7 +22,7 @@ try:
     main = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, 'main')))
     articles = main.find_elements_by_tag_name('article')
     for i in articles:
-        #header = i.find_elements_by_class_name('entry-summary')
+        header = i.find_elements_by_class_name('entry-summary')
         print(i.text)
 
 except:
