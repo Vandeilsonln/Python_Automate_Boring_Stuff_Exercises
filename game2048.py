@@ -45,4 +45,12 @@ while True:
     restart_game(page)
 
 print('Hope to see you soon!')
-# Get the average score and print to the screen
+# Get the average score and print it to the screen
+with open('scores_2048.txt', 'r') as scoreLog:
+    listOfScores = scoreLog.readlines()
+    lenght = len(listOfScores)
+    avg = 0
+    for i in listOfScores:
+        avg += int(i)
+    avg = avg / lenght
+    print('Average: ', avg)    
