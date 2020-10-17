@@ -3,51 +3,46 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from time import sleep
-from random import randint
+
 
 PATH = r"C:\Program Files (x86)\chromedriver.exe"
 browser = webdriver.Chrome(PATH)
 
 # Open the website
 browser.get('https://play2048.co/')
+page = browser.find_element_by_tag_name('html')
 
-# Function to play the game
+# Functions to play and re-play the game
 def play_game(actionList, webPage):
-    for i in range(100):
+    for i in range(50):
         for j in actionList:
             print(j)
             webPage.send_keys(j)
-    return "Finished"
+        for k in actionList[::-1]:
+            webPage.send_keys(k)
+
+def restart_game(webPage):
+    webPage.find_element_by_xpath('//a[text()="Try again"]').click()
+
 
 # Create a list of actions
 actions = [Keys.UP, Keys.RIGHT, Keys.DOWN, Keys.LEFT]
-            
-# Play!)
-page = browser.find_element_by_tag_name('html')
-play_game(actions, page)
 
-# Get the score
-score = browser.find_element_by_class_name('score-container').text
-print('Your score: ', score)
-
-# Write the score in a .txt file
-
-# Get the average score and print to the screen
-
-# Click to restart the game
-playAgain = input('Would you like to try another shot? (Y/N)')
 while True:
-    print("Okay, let's do it!")
-    
-    tryAgain = browser.find_element_by_xpath('//a[text()="Try again"]')
-    tryAgain.click()
+    # Play!
     play_game(actions, page)
 
+    # Get the score
     score = browser.find_element_by_class_name('score-container').text
     print('Your score: ', score)
+    
+    # Restart - or not
     playAgain = input('Would you like to try another shot? (Y/N)')
     if playAgain.lower() != 'y':
         break
+    restart_game(page)
+
+    # Write the score in a .txt file
 
 print('Hope to see you soon!')
+# Get the average score and print to the screen
