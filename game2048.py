@@ -13,12 +13,12 @@ browser = webdriver.Chrome(PATH)
 browser.get('https://play2048.co/')
 
 # Create a list of actions
-actions = ['Keys.UP', 'Keys.RIGHT', 'Keys.DOWN', 'Keys.LEFT']
+actions = [Keys.UP, Keys.RIGHT, Keys.DOWN, Keys.LEFT]
 
 # Play! (a specific number of times)
 page = browser.find_element_by_tag_name('html')
 
-for i in range(10):
+for i in range(20):
     for j in actions:
         print(j)
         page.send_keys(j)
