@@ -14,12 +14,9 @@ page = browser.find_element_by_tag_name('html')
 
 # Functions to play and re-play the game
 def play_game(actionList, webPage):
-    for i in range(50):
+    for i in range(100):    # instead of a FOR, I'd like to make it run until it detects the 'game over' screen.
         for j in actionList:
-            print(j)
             webPage.send_keys(j)
-        for k in actionList[::-1]:
-            webPage.send_keys(k)
 
 def restart_game(webPage):
     webPage.find_element_by_xpath('//a[text()="Try again"]').click()
