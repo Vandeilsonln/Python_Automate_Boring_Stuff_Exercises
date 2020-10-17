@@ -33,13 +33,16 @@ while True:
     score = browser.find_element_by_class_name('score-container').text
     print('Your score: ', score)
     
+    # Write the score in a .txt file
+    with open('scores_2048.txt', 'a') as scoreLog:
+        scoreLog.write(score)
+        scoreLog.write('\n')
+    
     # Restart - or not
     playAgain = input('Would you like to try another shot? (Y/N)')
     if playAgain.lower() != 'y':
         break
     restart_game(page)
-
-    # Write the score in a .txt file
 
 print('Hope to see you soon!')
 # Get the average score and print to the screen
