@@ -14,14 +14,27 @@ email = browser.find_element_by_id('email')
 password = browser.find_element_by_id('pass')
 enter = browser.find_element_by_id('u_0_b')
 
-email.send_keys('email')
-password.send_keys('pass')
+email.send_keys('emailaccount')
+password.send_keys('password')
 enter.click()
 sleep(5)
+
 # Access the message's screen
 messageScreen = browser.find_element_by_css_selector('[aria-label=Messenger]')
 messageScreen.click()
+
 sleep(5)
+
 goToMessenger = browser.find_element_by_xpath('//a[text()="Ver tudo no Messenger"]')
 goToMessenger.click()
+
+sleep(5)
+
+# Search user
+searchUser = browser.find_element_by_xpath('/html/body/div[1]/div[1]/div[1]/div/div/div/div[1]/div[2]/div[3]/div/div[1]/div/div/div[1]/span[1]/label/input')
+userName = 'User1'
+searchUser.send_keys(userName)
+searchUser.submit()
 # Send a message to a user
+
+
