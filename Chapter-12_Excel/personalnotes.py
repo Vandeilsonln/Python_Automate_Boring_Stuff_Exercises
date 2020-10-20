@@ -3,10 +3,10 @@ import os
 
 os.chdir(r'.\Chapter-12_Excel')
 
-myWorkBook = openpyxl.Workbook()
-mySheet = myWorkBook.active
+myWorkbook = openpyxl.load_workbook('example.xlsx')
 
-mySheet['A1'] = 'Hello'
-mySheet['A2'] = 'world!'
+print(myWorkbook.sheetnames)
 
-myWorkBook.save(filename='hello_world.xlsx')
+mySheet = myWorkbook.active
+print(mySheet)
+print(mySheet.title)
