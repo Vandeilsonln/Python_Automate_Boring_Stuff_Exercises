@@ -21,3 +21,7 @@ for column in mySheet.iter_cols(min_row=1, max_row=4, min_col=1, max_col=5):
 
 print('-'*40)
 
+for column in mySheet.columns:
+    print(column)
+
+print('-'*40)
