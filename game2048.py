@@ -54,3 +54,4 @@ with open('scores_2048.txt', 'r') as scoreLog:
         avg += int(i)
     avg = avg / lenght
     print('Average: ', avg)    
+browser.quit()
