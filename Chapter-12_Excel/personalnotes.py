@@ -53,3 +53,6 @@ for i in mySheet.iter_rows(min_col=3, max_col=9, min_row=2, values_only=True):
 
 # Using JSON here to be able to format the output for displaying later
 print(json.dumps(databaseCompanies))
+
+print('-'*40)
+
