@@ -8,7 +8,7 @@ def print_rows(CurSheet):
     for i in CurSheet.iter_rows(values_only=True):
         print(i)
 
-workbook = load_workbook(filename='hello_world.xlsx')
+workbook = load_workbook(filename='example.xlsx')
 
 sheet = workbook.active
 
@@ -61,5 +61,11 @@ sheet = workbook.active
 # print(workbook.sheetnames)
 # workbook.save('hello_world.xlsx')
 
-sheet.freeze_panes = 'C2'
-workbook.save('hello_world.xlsx')
+# sheet.freeze_panes = 'C2'
+
+# Check the used spreadsheet space using the atribute 'dimensions'
+
+print(sheet.dimensions)
+
+sheet.auto_filter.ref= sheet.dimensions
+workbook.save(filename='example.xlsx')
