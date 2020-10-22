@@ -17,6 +17,10 @@ color_scale_rule = ColorScaleRule(start_type='min', start_color=Color(indexed=37
 
 sheet.conditional_formatting.add('H2:H100', color_scale_rule)
 
+# conditional formatting color scale 3 colors
+# color_scale_rule = ColorScaleRule(start_value=1, start_color=Color(indexed=2), mid_value=3, mid_color=Color(indexed=43) , end_value=5, end_color=Color(indexed=17))
+# sheet.conditional_formatting.add('H2:H100', color_scale_rule)
+
 sheet.auto_filter.ref = 'H1:H100'
 
 workbook.save('reviews-sample.xlsx')
