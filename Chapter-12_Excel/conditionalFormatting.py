@@ -31,4 +31,14 @@ min_row=2, max_row=4, min_col=1, max_col=13)
 chart.add_data(data, from_rows=True, titles_from_data=True)
 sheet.add_chart(chart, 'C6')
 
+cats = Reference(worksheet=sheet,
+                 min_row=1,
+                 max_row=1,
+                 min_col=2,
+                 max_col=13)
+
+chart.set_categories(cats)
+chart.x_axis.title = 'Months'
+chart.y_axis.title = 'Sales (per unity)'
+
 workbook.save('line_chart.xlsx')
