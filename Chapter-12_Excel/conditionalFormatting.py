@@ -1,6 +1,7 @@
 import openpyxl
-from openpyxl.chart import BarChart, Reference
+from openpyxl.chart import LineChart, Reference
 from os import chdir
+import random
 
 
 chdir(r'.\Chapter-12_Excel')
@@ -10,24 +11,24 @@ sheet = workbook.active
 
 # Let's create some sample sales data
 rows = [
-    ['Product', 'Online', 'Store'],
-    [1, 30, 45],
-    [2, 40, 30],
-    [3, 40, 25],
-    [4, 50, 30],
-    [5, 30, 25],
-    [6, 25, 35],
-    [7, 32, 40]
+    ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    [1, ],
+    [2, ],
+    [3, ]
 ]
 
 for i in rows:
     sheet.append(i)
 
-chart = BarChart()
+for j in sheet.iter_rows(min_row=2, max_row=4, min_col=2, max_col=13):
+    for cell in j:
+        cell.value = random.randrange(2, 200)
+
+chart = LineChart()
 data = Reference(worksheet=sheet,
-min_row=1, max_row=8, min_col=2, max_col=3)
+min_row=2, max_row=4, min_col=1, max_col=13)
 
-chart.add_data(data, titles_from_data=True)
-sheet.add_chart(chart, 'E2')
+chart.add_data(data, from_rows=True, titles_from_data=True)
+sheet.add_chart(chart, 'C6')
 
-workbook.save('chart.xlsx')
+workbook.save('line_chart.xlsx')
