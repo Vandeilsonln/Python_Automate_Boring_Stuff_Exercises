@@ -1,14 +1,33 @@
-from openpyxl import load_workbook
-from openpyxl.formatting.rule import DataBarRule
-from openpyxl.styles.colors import Color
+import openpyxl
+from openpyxl.chart import BarChart, Reference
 from os import chdir
+
 
 chdir(r'.\Chapter-12_Excel')
 
-workbook = load_workbook(filename='reviews-sample.xlsx')
+workbook = openpyxl.Workbook()
 sheet = workbook.active
 
-data_bar_rule = DataBarRule(start_type='num', start_value=1,end_type='num', end_value=5, color=Color(indexed=17))
-sheet.conditional_formatting.add('H2:H100', data_bar_rule)
+# Let's create some sample sales data
+rows = [
+    ['Product', 'Online', 'Store'],
+    [1, 30, 45],
+    [2, 40, 30],
+    [3, 40, 25],
+    [4, 50, 30],
+    [5, 30, 25],
+    [6, 25, 35],
+    [7, 32, 40]
+]
 
-workbook.save('reviews-sample.xlsx')
+for i in rows:
+    sheet.append(i)
+
+chart = BarChart()
+data = Reference(worksheet=sheet,
+min_row=1, max_row=8, min_col=2, max_col=3)
+
+chart.add_data(data, titles_from_data=True)
+sheet.add_chart(chart, 'E2')
+
+workbook.save('chart.xlsx')
