@@ -34,7 +34,7 @@ while True:
     print('Your score: ', score)
     
     # Write the score in a .txt file
-    with open('scores_2048.txt', 'a') as scoreLog:
+    with open('Chapter-11_Web-Scrapping\scores_2048.txt', 'a') as scoreLog:
         scoreLog.write(score)
         scoreLog.write('\n')
     
