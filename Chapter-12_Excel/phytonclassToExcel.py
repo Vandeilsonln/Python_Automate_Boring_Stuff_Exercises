@@ -4,6 +4,7 @@ from openpyxl import Workbook
 from openpyxl.chart import LineChart, Reference
 from db_classes import Product, Sale
 
+chdir('Chapter-12_Excel')
 
 products = []
 
@@ -35,3 +36,20 @@ for i in products:
         data.append(j.quantity)
     sheet.append(data)
 
+# Create a Chart
+chart = LineChart()
+data = Reference(worksheet=sheet, min_row=2, max_row=6, min_col=2, max_col=7)
+
+chart.add_data(data, titles_from_data=True, from_rows=True)
+sheet.add_chart(chart, 'B8')
+
+# Categories
+cats = Reference(worksheet=sheet, min_row=1, max_row=1, min_col=3, max_col=7)
+chart.set_categories(cats)
+
+# Create Axis
+chart.x_axis.title = 'Months'
+chart.y_axis.title = 'Sales (per unity)'
+
+# Save the workbook
+workbook.save('pythonToExcel.xlsx')
