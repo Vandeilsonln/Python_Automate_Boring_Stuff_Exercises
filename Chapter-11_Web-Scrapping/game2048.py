@@ -14,7 +14,7 @@ page = browser.find_element_by_tag_name('html')
 
 # Functions to play and re-play the game
 def play_game(actionList, webPage):
-    for i in range(100):    # instead of a FOR, I'd like to make it run until it detects the 'game over' screen.
+    for _ in range(100):    # instead of a FOR, I'd like to make it run until it detects the 'game over' screen.
         for j in actionList:
             webPage.send_keys(j)
 
@@ -46,7 +46,7 @@ while True:
 
 print('Hope to see you soon!')
 # Get the average score and print it to the screen
-with open('scores_2048.txt', 'r') as scoreLog:
+with open(r'Chapter-11_Web-Scrapping\scores_2048.txt', 'r') as scoreLog:
     listOfScores = scoreLog.readlines()
     lenght = len(listOfScores)
     avg = 0
