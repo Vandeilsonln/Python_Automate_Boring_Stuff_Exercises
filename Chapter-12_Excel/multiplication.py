@@ -28,10 +28,19 @@ def createTable(size):
         myTable.append(dataTable)
 
     return myTable
-# create headers
+
+# create headers in Excel
+for i in range(1, 6):
+    print(sheet.cell(1, i+1))   # print Header by column
+    print(sheet.cell(i+1, 1))   # print Header by row
+
+def createHeaders(size):    # 5
+    for i in range(1, size+1):
+        sheet.cell(1, i+1).value = i
+        sheet.cell(i+1, 1).value = i
 
 # send it to the worksheet
 
 # save
 
-print(createTable(5))
+#print(createTable(5))
