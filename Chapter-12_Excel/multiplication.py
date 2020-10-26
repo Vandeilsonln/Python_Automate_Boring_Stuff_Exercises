@@ -14,7 +14,7 @@ workbook = openpyxl.Workbook()
 sheet = workbook.active
 
 # create a function to build the table
-def createTable(size):
+def createResults(size):
     # size: integer
     # return: list
     myTable = []
@@ -30,15 +30,18 @@ def createTable(size):
     return myTable
 
 # create headers in Excel
-def createHeaders(size):    # 5
+def createTable(size):    # 5
     for i in range(1, size+1):
         sheet.cell(1, i+1).value = i
         sheet.cell(i+1, 1).value = i
-    createTable(size)
 
+    data = createResults(size)
+
+    for result in data:
+        print(result)
 # send it to the worksheet
+createTable(5)
 
 # save
-createHeaders(5)
-workbook.save(filename='multiplicationtable.xlsx')
-#print(createTable(5))
+
+#workbook.save(filename='multiplicationtable.xlsx')
