@@ -41,14 +41,14 @@ def createHeader(size):
     sheet.insert_rows(1)
     for i in range(1, size+1):
         sheet.cell(1, i+1).value = i    # column
-        sheet.cell(1, i+1).alignment = Alignment(horizontal='center', textRotation=30)
+        sheet.cell(1, i+1).alignment = Alignment(horizontal='center', textRotation=15)
         sheet.cell(1, i+1).font = openpyxl.styles.Font(bold=True)
 
         sheet.cell(i+1, 1).value = i    # row
-        sheet.cell(i+1, 1).alignment = Alignment(horizontal='center', textRotation=30)
+        sheet.cell(i+1, 1).alignment = Alignment(horizontal='center', textRotation=15)
         sheet.cell(i+1, 1).font = openpyxl.styles.Font(bold=True)
 # send it to the worksheet
-createResults(5)
+createResults(50)
 
 # save
 
