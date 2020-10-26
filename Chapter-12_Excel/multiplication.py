@@ -4,6 +4,7 @@
 
 
 import openpyxl
+from openpyxl.styles import Alignment
 from os import chdir
 
 # set up directory
@@ -26,22 +27,29 @@ def createResults(size):
             result = colnum * rownum
             dataTable.append(result)
         myTable.append(dataTable)
+    
+    # append the data to the sheet
+    for row in myTable:
+        sheet.append(row)
+    
+    createHeader(size)
 
-    return myTable
 
 # create headers in Excel
-def createTable(size):    # 5
+def createHeader(size):
+    sheet.insert_cols(1)
+    sheet.insert_rows(1)
     for i in range(1, size+1):
-        sheet.cell(1, i+1).value = i
-        sheet.cell(i+1, 1).value = i
+        sheet.cell(1, i+1).value = i    # column
+        sheet.cell(1, i+1).alignment = Alignment(horizontal='center', textRotation=30)
+        sheet.cell(1, i+1).font = openpyxl.styles.Font(bold=True)
 
-    data = createResults(size)
-
-    for row in sheet.iter_rows(min_col=2, min_row=2, max_col=size+1, max_row=size+1):
-        pass
+        sheet.cell(i+1, 1).value = i    # row
+        sheet.cell(i+1, 1).alignment = Alignment(horizontal='center', textRotation=30)
+        sheet.cell(i+1, 1).font = openpyxl.styles.Font(bold=True)
 # send it to the worksheet
-createTable(5)
+createResults(5)
 
 # save
 
-#workbook.save(filename='multiplicationtable.xlsx')
+workbook.save(filename='multiplicationtable.xlsx')
