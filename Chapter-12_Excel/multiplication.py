@@ -37,8 +37,8 @@ def createTable(size):    # 5
 
     data = createResults(size)
 
-    for result in data:
-        print(result)
+    for row in sheet.iter_rows(min_col=2, min_row=2, max_col=size+1, max_row=size+1):
+        pass
 # send it to the worksheet
 createTable(5)
 
