@@ -5,14 +5,12 @@ from os import chdir
 
 chdir(r'Chapter-12_Excel')
 
-workbook = openpyxl.Workbook()
-sheet = workbook.active
+workbook = openpyxl.load_workbook('personalnotes.xlsx')
+sheet = workbook.get_sheet_by_name('Personal notes 3')
 
-sheet.title = 'Personal notes 3'
+print(sheet.max_column)
+print(sheet.max_row)
+print(sheet.dimensions)
 
-for row in range(1, 11):
-    for col in range(1, 11):
-        sheet.cell(row, col).value = row * col
-
-
-workbook.save(filename='personalnotes.xlsx')
+max_column = sheet.dimensions.split(':')[1][-2::1]
+# So, when you want to append new data into the sheet, start from that value+1
