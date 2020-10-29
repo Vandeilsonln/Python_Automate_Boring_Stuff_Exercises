@@ -12,5 +12,6 @@ print(sheet.max_column)
 print(sheet.max_row)
 print(sheet.dimensions)
 
-max_column = sheet.dimensions.split(':')[1][-2::1]
+max_column1 = sheet.dimensions.split(':')[1][-2::1]
+print(max_column1)
 # So, when you want to append new data into the sheet, start from that value+1
