@@ -4,15 +4,11 @@ import csv
 
 chdir(r'.\Chapter-14_csv_json_files')
 
-exampleFile = open('example.csv')
-exampleReader = csv.reader(exampleFile)
-exampleData = list(exampleReader)
+outputFile = open('output.csv', 'w', newline='')
 
-for i in exampleData:
-    print(i)
-print('-' * 40)
+outputWriter = csv.writer(outputFile)
+outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow(['Hello', 'world!', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow([1, 2, 3.141592, 4])
 
-print(exampleData[0][1])
-print(exampleData[2][0])
-print(exampleData[6][2])
-
+outputFile.close()
