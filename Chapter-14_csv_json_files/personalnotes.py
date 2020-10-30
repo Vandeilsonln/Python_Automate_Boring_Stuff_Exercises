@@ -1,14 +1,14 @@
 from os import chdir
 import csv
-import os
 
-for i in os.listdir:
-    print(i)
 
 chdir(r'.\Chapter-14_csv_json_files')
 
-exampleFile = open('example.csv')
-exampleReader = csv.reader(exampleFile)
-exampleData = list(exampleReader)
+outputFile = open('output.csv', 'w', newline='')
 
-print(exampleData)
+outputWriter = csv.writer(outputFile)
+outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow(['Hello', 'world!', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow([1, 2, 3.141592, 4])
+
+outputFile.close()
