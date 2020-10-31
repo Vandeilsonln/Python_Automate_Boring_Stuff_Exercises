@@ -2,7 +2,7 @@
 # removeCsvHeader.py - Removes the header from all CSV files in the current working directory
 
 import csv, os
-os.chdir(r'Chapter-14_csv_json_files')
+os.chdir(r'Chapter-14_csv_json_files\csv_files')
 
 os.makedirs('headerRemoved', exist_ok=True)
 
