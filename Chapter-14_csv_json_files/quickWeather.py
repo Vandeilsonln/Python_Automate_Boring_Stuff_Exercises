@@ -5,11 +5,7 @@
 import json, requests, sys, pprint
 
 
-# Compute location from command line arguments.
-#if len(sys.argv) < 2:
- #   print('Usage: quickWeather.py location')
-  #  sys.exit()
-location = 'Sao Paulo, Brazil' #' '.join(sys.argv[1:])
+location = 'Sao Paulo, Brazil'
 key = ''
 # Download the JSON data from OpenWeatherMap.org's API.
 url = f'https://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&lang=pt_br&appid={key}'
@@ -20,4 +16,9 @@ response.raise_for_status()
 # Load JSON data into a Python variable.
 weatherData = json.loads(response.text)
 
-pprint.pprint(weatherData)
+# pprint.pprint(weatherData)
+
+# Print the location's current weather
+print(f'Current weather of {location}')
+print('Feels like: ', weatherData['main']['feels_like'])
+print('Sky: ', weatherData['weather'][0]['description'])
