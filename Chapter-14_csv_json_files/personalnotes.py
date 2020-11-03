@@ -1,13 +1,9 @@
 from os import chdir
-import csv
+import json
 
+stringjson = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
 
-chdir(r'.\Chapter-14_csv_json_files')
+jsonToPython = json.loads(stringjson)
+print(jsonToPython)
 
-outputFile = open('example.csv', 'w', newline='')
-csvWriter = csv.writer(outputFile, delimiter='\t', lineterminator='\n\n')
-
-csvWriter.writerow(['eggs', 'bacon', 'ham'])
-csvWriter.writerow(['spam', 'spam', 'spam', 'spam'])
-outputFile.close()
-
+print(json.dumps(jsonToPython))
