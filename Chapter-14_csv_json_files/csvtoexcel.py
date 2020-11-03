@@ -6,13 +6,19 @@ import openpyxl
 from os import chdir
 
 chdir(r'Chapter-14_csv_json_files')
-#Open the csv file
+
+# Set up the excel spreadsheet
+workbook = openpyxl.Workbook()
+sheet = workbook.active
+sheet.title = 'Exercise'
+
+# Open the csv file
 with open('output.csv', 'r') as csvFile:
     readerCsvFile = csv.reader(csvFile)
-    #Loop through every line of the csv file
+    print('Reading ' + csvFile.name)
+    # Loop through every line of the csv file
     for row in readerCsvFile:
-        
-
-#TODO: Create the excel spreadsheet
-
-#TODO: Write the csv object to the excel one.
+        # Write the csv object to the excel one.
+        sheet.append(row)
+workbook.save('csvtoexcel_ex.xlsx')
+print('Finished\nWorkbook saved!')
