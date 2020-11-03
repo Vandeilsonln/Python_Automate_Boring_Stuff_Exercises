@@ -19,8 +19,13 @@ for excelFile in os.listdir(path):
         sheet = wb.get_sheet_by_name(sheetName)
 
         # Create the CSV filename from the Excel filename and sheet title.
-
+        excelName = excelFile.strip('.xlsx')
+        sheetName = sheet.title
+        csvName = excelName + '_' + sheetName + '.csv'
+        print(csvName)
+        
         # Create the csv.writer object for this CSV file.
+        csvFile = csv.writer(csvName)
 
         # Loop through every row in the sheet.
         for rowNum in range(1, sheet.get_highest_row() + 1):
