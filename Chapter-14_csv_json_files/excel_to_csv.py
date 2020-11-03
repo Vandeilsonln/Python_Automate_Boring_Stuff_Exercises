@@ -5,8 +5,9 @@
 
 import openpyxl, csv, os
 
+os.chdir(r'.\Chapter-14_csv_json_files\excel_files')
+path = os.getcwd()
 
-path = r'.\Chapter-14_csv_json_files\excel_files'
 for excelFile in os.listdir(path):
     # Skip nom-xlsx files, load the workbook object.
     if not excelFile.endswith('.xlsx'):
@@ -34,7 +35,8 @@ for excelFile in os.listdir(path):
             # Loop through each cell in the row.
             for colNum in range(1, sheet.max_column + 1):
                 # Append each cell's data to rowData.
-                rowData.append(colNum)
+                myData = sheet.cell(rowNum, colNum).value
+                rowData.append(myData)
             # Write the rowData list to the CSV file.
             csvFile.writerow(rowData)
         
