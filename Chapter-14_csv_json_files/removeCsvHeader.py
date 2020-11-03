@@ -23,7 +23,7 @@ for csvFilename in os.listdir('.'):
         csvRows.append(row)
     csvFileObj.close()        
 
-    #TODO: Write out the CSV file.
+    # Write out the CSV file.
     csvFileObj = open(os.path.join('headerRemoved', csvFilename), 'w', newline='')
     csvWriter = csv.writer(csvFileObj)
     for row in csvRows:
