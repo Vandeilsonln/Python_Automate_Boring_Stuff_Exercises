@@ -8,6 +8,8 @@ os.makedirs('xkcd', exist_ok=True)
 def downloadXkcd(startComic, endComic):
     for urlNumber in range(startComic, endComic):
         # Download the page
+        if urlNumber == 404:
+            continue
         print(f'Downloading page http://xkcd.com/{urlNumber}')
 
         res = requests.get(f'https://xkcd.com/{urlNumber}')
@@ -25,7 +27,7 @@ def downloadXkcd(startComic, endComic):
             comicUrl = comicElem[0].get('src')
             # Download the image.
             print(f'Downloading image {comicUrl}')
-            res = requests.get(comicUrl)
+            res = requests.get('https:' + comicUrl)
             res.raise_for_status()
 
             # Save image to ./xkcd
@@ -36,8 +38,9 @@ def downloadXkcd(startComic, endComic):
 
 # Create and start the Thread objects.
 downloadThreads = []
-for i in range(0, 1400, 100):
-    downloadThread =threading.Thread(target=downloadXkcd, args=(i, i+99))
+for i in range(1, 1400, 100):
+    
+    downloadThread =threading.Thread(target=downloadXkcd, args=(i, i+98))
     downloadThreads.append(downloadThread)
     downloadThread.start()
 
